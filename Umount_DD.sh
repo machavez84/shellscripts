@@ -5,10 +5,15 @@
 ServiceStop ()
 {
 echo "Deteniendo servicios dependientes..."
-sudo service nfs-common stop
-sudo service nfs-kernel-server stop
-sudo service transmission-daemon stop
+echo "Deteniendo docker containers..."
+docker stop transmission-daemon
+docker stop owncloud
 echo "Done"
+echo "Deteniendo nfs services" 
+sudo service nfs-kernel-server stop
+sudo service rpcbind stop
+echo "Done"
+echo "Todos los servicios detenidos!"
 }
 
 #Desmontar DD

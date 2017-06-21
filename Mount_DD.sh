@@ -14,10 +14,16 @@ echo "Done"
 ServiceStart ()
 {
 echo "Reiniciando servicios dependientes..."
-sudo service nfs-common start
-sudo service nfs-kernel-server start
-sudo service transmission-daemon start
+echo "Reiniciando docker containers..."
+docker start transmission-daemon
+docker start owncloud
 echo "Done"
+echo "Reiniciando nfs service..."
+sudo service rpcbind start
+sudo service nfs-kernel-server start
+sudo showmount -e
+echo "Done"
+echo "Reiniciados todos los  servicios!"
 }
 
 
