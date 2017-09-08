@@ -12,6 +12,7 @@ echo "Done"
 echo "Deteniendo nfs services" 
 sudo service nfs-kernel-server stop
 sudo service rpcbind stop
+sudo service nfs-common stop
 echo "Done"
 echo "Todos los servicios detenidos!"
 }
